@@ -15,3 +15,20 @@ export async function agregarProducto(req, res) {
         res.status(500).send('Error al agregar producto');
     }
 }
+
+
+export async function modificarProducto(req, res) {
+    try {
+        const { id, descripcion, precio, cantidad, habilitado, imagen } = req.body;
+    
+        const [result] = await pool.query(
+            'CALL ModificarProducto(?, ?, ?, ?, ?, ?)',
+            [id, descripcion, precio, cantidad, habilitado, imagen]
+        );
+
+        res.status(200).send('Producto modificado correctamente');
+    } catch (error) {
+        console.error('Error al modificar producto:', error);
+        res.status(500).send('Error al modificar producto');
+    }
+}

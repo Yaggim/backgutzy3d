@@ -9,7 +9,7 @@ document.getElementById('productoForm').addEventListener('submit', async functio
     const imagen = document.getElementById('imagen').value;
 
     try {
-        const response = await fetch('https://nombre-del-servicio.onrender.com/api/productos', {
+        const response = await fetch('https://backgutzy3d.onrender.com/api/productos', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

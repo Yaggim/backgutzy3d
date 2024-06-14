@@ -13,7 +13,7 @@ const __dirname = dirname(__filename);
 
 // Configuración de CORS
 const corsOptions = {
-  origin: 'https://nombre-del-servicio.onrender.com', // Reemplaza esto con el origen de tu frontend
+  origin: 'https://backgutzy3d.onrender.com/', // Reemplaza esto con el origen de tu frontend
   optionsSuccessStatus: 200 // Para navegadores legacy que necesiten status 200
 };
 
