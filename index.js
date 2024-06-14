@@ -1,8 +1,15 @@
 import express from 'express';
 import pkg from 'body-parser';
-import  pool from './config/database.js';  
+import pool from './config/database.js';  
 import userRoutes from './routes/userRoutes.js';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// Definir __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Configuración de CORS
 const corsOptions = {
