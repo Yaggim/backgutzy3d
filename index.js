@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Lista de orígenes permitidos
-const allowedOrigins = ['https://backgutzy3d.onrender.com', 'https://yaggim.github.io/Gutzy3D-/', 'http://127.0.0.1:5501/']; // Añade aquí los orígenes permitidos
+const allowedOrigins = ['https://backgutzy3d.onrender.com', 'https://yaggim.github.io/Gutzy3D-', 'http://127.0.0.1:5501', 'https://yaggim.github.io']; // Añade aquí los orígenes permitidos
 
 // Configuración de CORS
 const corsOptions = {
