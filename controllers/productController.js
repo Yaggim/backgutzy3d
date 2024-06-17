@@ -32,3 +32,13 @@ export async function modificarProducto(req, res) {
         res.status(500).send('Error al modificar producto');
     }
 }
+
+export async function obtenerProductos(req, res) {
+    try {
+        const [rows] = await pool.query('SELECT * FROM productos');
+        res.json(rows);
+    } catch (error) {
+        console.error('Error al obtener productos:', error);
+        res.status(500).send('Error al obtener productos');
+    }
+}

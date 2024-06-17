@@ -11,11 +11,24 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+
+// Lista de orígenes permitidos
+const allowedOrigins = ['https://backgutzy3d.onrender.com', 'https://yaggim.github.io/Gutzy3D-/']; // Añade aquí los orígenes permitidos
+
 // Configuración de CORS
 const corsOptions = {
-  origin: 'https://backgutzy3d.onrender.com/', // Reemplaza esto con el origen de tu frontend
+  origin: function (origin, callback) {
+    // Permite solicitudes sin origen (como postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('No permitido por CORS'));
+    }
+  },
   optionsSuccessStatus: 200 // Para navegadores legacy que necesiten status 200
 };
+
 
 const { json, urlencoded } = pkg;
 const app = express();
