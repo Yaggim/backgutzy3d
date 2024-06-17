@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!response.ok) {
                 throw new Error('Usuario o contraseña incorrectos');
             }
+            const data = await response.json();
             if (data.redirectUrl) {
 
             // Si el login es exitoso, ocultar formulario de login y mostrar formulario de agregar productos
