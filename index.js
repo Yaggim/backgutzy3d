@@ -3,6 +3,9 @@ import pkg from 'body-parser';
 import pool from './config/database.js';  
 import userRoutes from './routes/userRoutes.js';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const { json, urlencoded } = pkg;
 const app = express();
@@ -34,6 +37,16 @@ app.use(urlencoded({ extended: true }));
 
 // Rutas API
 app.use('/api', userRoutes);
+
+// Servir archivos estáticos desde la carpeta 'public'
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Ruta por defecto para servir el archivo 'index.html'
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 // Iniciar el servidor
 app.listen(PORT, () => {
