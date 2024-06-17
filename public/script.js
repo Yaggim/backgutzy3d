@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const productoForm = document.getElementById('productoForm');
     const agregarProductoContainer = document.getElementById('agregarProductoContainer');
 
+    if (!loginForm || !agregarProductoContainer) {
+        console.error('Elemento no encontrado en el DOM.');
+        return;
+    }
+
     // Evento para el formulario de login
     loginForm.addEventListener('submit', async function(event) {
         event.preventDefault();
