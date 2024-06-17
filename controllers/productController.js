@@ -39,6 +39,6 @@ export async function obtenerProductos(req, res) {
         res.json(rows);
     } catch (error) {
         console.error('Error al obtener productos:', error);
-        res.status(500).send('Error al obtener productos');
+        res.status(500).json({ error: 'Error al obtener productos' });
     }
 }
