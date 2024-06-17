@@ -23,12 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!response.ok) {
                 throw new Error('Usuario o contraseña incorrectos');
             }
+
             const data = await response.json();
             if (data.redirectUrl) {
-
-            // Si el login es exitoso, ocultar formulario de login y mostrar formulario de agregar productos
-            loginForm.style.display = 'none';
-            agregarProductoContainer.style.display = 'block';
+                // Si el login es exitoso, ocultar formulario de login y mostrar formulario de agregar productos
+                loginForm.style.display = 'none';
+                agregarProductoContainer.style.display = 'block';
             }
         } catch (error) {
             console.error('Error en el login:', error.message);
