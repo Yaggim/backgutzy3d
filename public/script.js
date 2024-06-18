@@ -1,9 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById('loginForm');
     const loginError = document.getElementById('loginError');
-    const agregarProductoContainer = document.getElementById('agregarProductoContainer');
+    const agregarProductoContainer = document.getElementById('productoForm').parentElement;
     const productoForm = document.getElementById('productoForm');
     const productoError = document.getElementById('productoError');
+
+    // Verificar si el usuario ya ha iniciado sesión
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (isLoggedIn) {
+        loginForm.style.display = 'none';
+        agregarProductoContainer.style.display = 'block';
+    }
 
     // Evento para el formulario de login
     loginForm.addEventListener('submit', async function(event) {
@@ -31,6 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 loginError.textContent = '';
                 loginForm.style.display = 'none';
                 agregarProductoContainer.style.display = 'block';
+                localStorage.setItem('isLoggedIn', 'true');
+            }else{
+                throw new Error('Acceso no autorizado');
             }
         } catch (error) {
             console.error('Error en el login:', error.message);
