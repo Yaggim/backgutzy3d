@@ -1,15 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById('loginForm');
-    const loginError = document.getElementById('loginError');
-    const agregarProductoContainer = document.getElementById('productoForm').parentElement;
+    const loginContainer = document.getElementById('loginContainer');
     const productoForm = document.getElementById('productoForm');
+    const productoContainer = document.querySelector('.container');
+    const loginError = document.getElementById('loginError');
     const productoError = document.getElementById('productoError');
+    const logoutButton = document.getElementById('logoutButton');
 
     // Verificar si el usuario ya ha iniciado sesión
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     if (isLoggedIn) {
-        loginForm.style.display = 'none';
-        agregarProductoContainer.style.display = 'block';
+        showProductForm();
+    } else {
+        showLoginForm();
     }
 
     // Evento para el formulario de login
@@ -34,11 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const data = await response.json();
             if (data.redirectUrl) {
-                // Si el login es exitoso, ocultar formulario de login y mostrar formulario de agregar productos
+                // Si el login es exitoso, ocultar formulario de login y mostrar formulario de productos
                 loginError.textContent = '';
-                loginForm.style.display = 'none';
-                agregarProductoContainer.style.display = 'block';
                 localStorage.setItem('isLoggedIn', 'true');
+                showProductForm();
             }
         } catch (error) {
             console.error('Error en el login:', error.message);
@@ -78,6 +80,24 @@ document.addEventListener("DOMContentLoaded", function () {
             mostrarError('Error al agregar producto', productoError);
         }
     });
+
+    // Evento para cerrar sesión
+    logoutButton.addEventListener('click', function() {
+        localStorage.setItem('isLoggedIn', 'false');
+        showLoginForm();
+    });
+
+    function showLoginForm() {
+        loginContainer.style.display = 'block';
+        productoContainer.style.display = 'none';
+        logoutButton.style.display = 'none';
+    }
+
+    function showProductForm() {
+        loginContainer.style.display = 'none';
+        productoContainer.style.display = 'block';
+        logoutButton.style.display = 'block';
+    }
 
     function mostrarError(mensaje, elemento) {
         elemento.textContent = mensaje;
