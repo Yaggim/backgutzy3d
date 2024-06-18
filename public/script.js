@@ -41,6 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 loginError.textContent = '';
                 localStorage.setItem('isLoggedIn', 'true');
                 showProductForm();
+            }else{
+            throw new Error('Acceso no autorizado');
             }
         } catch (error) {
             console.error('Error en el login:', error.message);
