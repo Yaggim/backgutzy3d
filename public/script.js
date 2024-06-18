@@ -1,13 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById('loginForm');
-    const errorContainer = document.getElementById('errorContainer');
-    const productoForm = document.getElementById('productoForm');
+    const loginError = document.getElementById('loginError');
     const agregarProductoContainer = document.getElementById('agregarProductoContainer');
-
-    if (!loginForm || !agregarProductoContainer) {
-        console.error('Elemento no encontrado en el DOM.');
-        return;
-    }
+    const productoForm = document.getElementById('productoForm');
+    const productoError = document.getElementById('productoError');
 
     // Evento para el formulario de login
     loginForm.addEventListener('submit', async function(event) {
@@ -32,12 +28,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const data = await response.json();
             if (data.redirectUrl) {
                 // Si el login es exitoso, ocultar formulario de login y mostrar formulario de agregar productos
+                loginError.textContent = '';
                 loginForm.style.display = 'none';
                 agregarProductoContainer.style.display = 'block';
             }
         } catch (error) {
             console.error('Error en el login:', error.message);
-            mostrarError(error.message);
+            mostrarError(error.message, loginError);
         }
     });
 
@@ -63,17 +60,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (response.ok) {
                 alert('Producto agregado correctamente');
+                // Aquí podrías reiniciar el formulario o tomar alguna acción adicional
             } else {
                 const errorData = await response.json();
-                alert(`Error: ${errorData.message}`);
+                mostrarError(`Error: ${errorData.message}`, productoError);
             }
         } catch (error) {
             console.error('Error al agregar producto:', error);
-            alert('Error al agregar producto');
+            mostrarError('Error al agregar producto', productoError);
         }
     });
 
-    function mostrarError(mensaje) {
-        errorContainer.textContent = mensaje;
+    function mostrarError(mensaje, elemento) {
+        elemento.textContent = mensaje;
     }
 });
