@@ -1,4 +1,44 @@
-/* Estilos para los botones del formulario */
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form > div {
+    margin-bottom: 10px;
+}
+
+.form label {
+    margin-bottom: 5px;
+}
+
+.form input,
+.form select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
 .form button {
     padding: 12px 20px;
     background-color: #007bff;
@@ -11,44 +51,140 @@
 }
 
 .form button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; 
 }
 
-.form button[type="submit"] {
-    background-color: #28a745; /* Verde */
+.error {
+    color: #dc3545; 
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-.form button[type="submit"]:hover {
-    background-color: #218838; /* Verde más oscuro */
+
+#loginContainer {
+    display: none; 
 }
 
-.form button[type="reset"] {
-    background-color: #dc3545; /* Rojo */
+#loginContainer h1 {
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-.form button[type="reset"]:hover {
-    background-color: #c82333; /* Rojo más oscuro */
+#loginForm {
+    margin-bottom: 20px;
 }
 
-.form button.cancel-button {
-    background-color: #ffc107; /* Amarillo */
+
+#nuevoProductoButton {
+    padding: 12px 20px;
+    background-color: #28a745; 
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
 }
 
-.form button.cancel-button:hover {
-    background-color: #e0a800; /* Amarillo más oscuro */
+#nuevoProductoButton:hover {
+    background-color: #218838; 
 }
 
-/* Estilos para los botones de la tabla */
-.table-button {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+#cancelarButton {
+    padding: 10px 16px;
+    background-color: #dc3545; 
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
     margin-top: 10px;
 }
 
-.table-button button {
+#cancelarButton:hover {
+    background-color: #c82333; 
+}
+
+
+
+#productoFormContainer {
+    display: none; 
+}
+
+#productoFormContainer h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#productoFormContainer form {
+    margin-bottom: 20px;
+}
+
+#productoFormContainer form div {
+    margin-bottom: 10px;
+}
+
+#productoFormContainer form label {
+    margin-bottom: 5px;
+}
+
+#productoFormContainer form input,
+#productoFormContainer form select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#productoFormContainer form button {
+    padding: 12px 20px;
+    background-color: #007bff; 
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#productoFormContainer form button:hover {
+    background-color: #0056b3; 
+}
+
+
+#productosTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#productosTable th,
+#productosTable td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+#productosTable th {
+    background-color: #f0f0f0; 
+    font-weight: bold;
+}
+
+#productosTable td img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100px;
+}
+
+#productosTable .acciones {
+    white-space: nowrap; 
+}
+
+#productosTable .acciones button {
     padding: 8px 12px;
-    background-color: #007bff;
+    background-color: #ffc107; 
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -57,30 +193,24 @@
     transition: background-color 0.3s ease;
 }
 
-.table-button button:hover {
-    background-color: #0056b3;
+#productosTable .acciones button:hover {
+    background-color: #e0a800; 
 }
 
-.table-button .add-button {
-    background-color: #28a745; /* Verde */
+
+
+#logoutButton {
+    padding: 12px 20px;
+    background-color: #dc3545; 
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    display: none; 
 }
 
-.table-button .add-button:hover {
-    background-color: #218838; /* Verde más oscuro */
-}
-
-.table-button .edit-button {
-    background-color: #ffc107; /* Amarillo */
-}
-
-.table-button .edit-button:hover {
-    background-color: #e0a800; /* Amarillo más oscuro */
-}
-
-.table-button .delete-button {
-    background-color: #dc3545; /* Rojo */
-}
-
-.table-button .delete-button:hover {
-    background-color: #c82333; /* Rojo más oscuro */
+#logoutButton:hover {
+    background-color: #c82333; 
 }
