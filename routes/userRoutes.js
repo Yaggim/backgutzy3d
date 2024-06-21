@@ -2,7 +2,7 @@
 import { Router } from 'express';
 import { crearUsuario, loginUsuario } from '../controllers/userController.js'; 
 import { crearRol } from '../controllers/rolController.js'; 
-import { agregarProducto, modificarProducto, obtenerProductos } from '../controllers/productController.js';
+import { agregarProducto, modificarProducto, obtenerProductos, actualizarCantidad } from '../controllers/productController.js';
 
 
 const router = Router();
@@ -13,6 +13,7 @@ router.post('/rol', crearRol);
 router.post('/productos', agregarProducto);
 router.put('/productos', modificarProducto);
 router.get('/productos', obtenerProductos);
+router.post('/actualizar', actualizarCantidad);
 router.post('/login', loginUsuario);
 
 

@@ -42,3 +42,19 @@ export async function obtenerProductos(req, res) {
         res.status(500).json({ error: 'Error al obtener productos' });
     }
 }
+
+export async function actualizarCantidad(req, res) {
+    try {
+        const { id, cantidad } = req.body;
+    
+        const [result] = await pool.query(
+            'CALL ActualizarStock(?, ?)',
+            [id, cantidad]
+        );
+
+        res.status(200).send('Se actualizo el stock correctamente');
+    } catch (error) {
+        console.error('Error al agregar producto:', error);
+        res.status(500).send('Error al agregar producto');
+    }
+}
