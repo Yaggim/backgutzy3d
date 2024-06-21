@@ -148,14 +148,14 @@ document.addEventListener("DOMContentLoaded", function () {
     window.editarProducto = function(id) {
         formTitle.textContent = 'Modificar Producto';
         // Llenar el formulario con los datos del producto a modificar
-        const producto = productos.find(p => p.id === id);
-        productoId.value = producto.id;
-        document.getElementById('nombre').value = producto.nombre;
-        document.getElementById('descripcion').value = producto.descripcion;
-        document.getElementById('precio').value = producto.precio;
-        document.getElementById('cantidad').value = producto.cantidad;
-        document.getElementById('habilitado').value = producto.habilitado;
-        document.getElementById('imagen').value = producto.imagen;
+        const producto = productos.find(p => p.Id_Producto === id);
+        productoId.value = producto.Id_Producto;
+        document.getElementById('nombre').value = producto.Nombre;
+        document.getElementById('descripcion').value = producto.Descripcion;
+        document.getElementById('precio').value = producto.Precio;
+        document.getElementById('cantidad').value = producto.Cantidad;
+        document.getElementById('habilitado').value = producto.Habilitado;
+        document.getElementById('imagen').value = producto.Imagen;
         productoFormContainer.style.display = 'block';
     };
 
