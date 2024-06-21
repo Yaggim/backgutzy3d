@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const imagen = document.getElementById('imagen').value;
 
         try {
-            const response = await fetch(id ? `https://backgutzy3d.onrender.com/api/productos/${id}` : 'https://backgutzy3d.onrender.com/api/productos', {
+            const response = await fetch(id ? `https://backgutzy3d.onrender.com/api/productos/` : 'https://backgutzy3d.onrender.com/api/productos', {
                 method: id ? 'PUT' : 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -123,15 +123,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 productos.forEach(producto => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${producto.Id_Producto}</td>
-                        <td>${producto.Nombre}</td>
-                        <td>${producto.Descripcion}</td>
-                        <td>${producto.Precio}</td>
-                        <td>${producto.Cantidad}</td>
-                        <td>${producto.Habilitado}</td>
-                        <td><img src="${producto.Imagen}" alt="${producto.Nombre}" width="50"></td>
+                        <td>${producto.id}</td>
+                        <td>${producto.nombre}</td>
+                        <td>${producto.descripcion}</td>
+                        <td>${producto.precio}</td>
+                        <td>${producto.cantidad}</td>
+                        <td>${producto.habilitado}</td>
+                        <td><img src="${producto.imagen}" alt="${producto.nombre}" width="50"></td>
                         <td>
-                            <button onclick="editarProducto(${producto.Id_Producto})">Editar</button>
+                            <button onclick="editarProducto(${producto.id})">Editar</button>
                         </td>
                     `;
                     productosTable.appendChild(row);
@@ -148,14 +148,14 @@ document.addEventListener("DOMContentLoaded", function () {
     window.editarProducto = function(id) {
         formTitle.textContent = 'Modificar Producto';
         // Llenar el formulario con los datos del producto a modificar
-        const producto = productos.find(p => p.Id_Producto === id);
-        productoId.value = producto.Id_Producto;
-        document.getElementById('nombre').value = producto.Nombre;
-        document.getElementById('descripcion').value = producto.Descripcion;
-        document.getElementById('precio').value = producto.Precio;
-        document.getElementById('cantidad').value = producto.Cantidad;
-        document.getElementById('habilitado').value = producto.Habilitado;
-        document.getElementById('imagen').value = producto.Imagen;
+        const producto = productos.find(p => p.id === id);
+        productoId.value = producto.id;
+        document.getElementById('nombre').value = producto.nombre;
+        document.getElementById('descripcion').value = producto.descripcion;
+        document.getElementById('precio').value = producto.precio;
+        document.getElementById('cantidad').value = producto.cantidad;
+        document.getElementById('habilitado').value = producto.habilitado;
+        document.getElementById('imagen').value = producto.imagen;
         productoFormContainer.style.display = 'block';
     };
 
