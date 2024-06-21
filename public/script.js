@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const productoError = document.getElementById('productoError');
     const logoutButton = document.getElementById('logoutButton');
 
+    let productos = []; // Variable para almacenar los productos
+
     // Verificar si el usuario ya ha iniciado sesión
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     if (isLoggedIn) {
@@ -116,20 +118,20 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             const response = await fetch('https://backgutzy3d.onrender.com/api/productos');
             if (response.ok) {
-                const productos = await response.json();
+                productos = await response.json(); // Almacenar los productos
                 productosTable.innerHTML = '';
                 productos.forEach(producto => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${producto.id}</td>
-                        <td>${producto.nombre}</td>
-                        <td>${producto.descripcion}</td>
-                        <td>${producto.precio}</td>
-                        <td>${producto.cantidad}</td>
-                        <td>${producto.habilitado}</td>
-                        <td><img src="${producto.imagen}" alt="${producto.nombre}" width="50"></td>
+                        <td>${producto.Id_Producto}</td>
+                        <td>${producto.Nombre}</td>
+                        <td>${producto.Descripcion}</td>
+                        <td>${producto.Precio}</td>
+                        <td>${producto.Cantidad}</td>
+                        <td>${producto.Habilitado}</td>
+                        <td><img src="${producto.Imagen}" alt="${producto.Nombre}" width="50"></td>
                         <td>
-                            <button onclick="editarProducto(${producto.id})">Editar</button>
+                            <button onclick="editarProducto(${producto.Id_Producto})">Editar</button>
                         </td>
                     `;
                     productosTable.appendChild(row);
@@ -143,19 +145,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function editarProducto(id) {
+    window.editarProducto = function(id) {
         formTitle.textContent = 'Modificar Producto';
         // Llenar el formulario con los datos del producto a modificar
-        const producto = productos.find(p => p.id === id);
-        productoId.value = producto.id;
-        document.getElementById('nombre').value = producto.nombre;
-        document.getElementById('descripcion').value = producto.descripcion;
-        document.getElementById('precio').value = producto.precio;
-        document.getElementById('cantidad').value = producto.cantidad;
-        document.getElementById('habilitado').value = producto.habilitado;
-        document.getElementById('imagen').value = producto.imagen;
+        const producto = productos.find(p => p.Id_Producto === id);
+        productoId.value = producto.Id_Producto;
+        document.getElementById('nombre').value = producto.Nombre;
+        document.getElementById('descripcion').value = producto.Descripcion;
+        document.getElementById('precio').value = producto.Precio;
+        document.getElementById('cantidad').value = producto.Cantidad;
+        document.getElementById('habilitado').value = producto.Habilitado;
+        document.getElementById('imagen').value = producto.Imagen;
         productoFormContainer.style.display = 'block';
-    }
+    };
 
     function showLoginForm() {
         loginContainer.style.display = 'block';
