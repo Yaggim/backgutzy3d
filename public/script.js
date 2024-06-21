@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td>${producto.Precio}</td>
                         <td>${producto.Cantidad}</td>
                         <td>${producto.Habilitado}</td>
-                        <td><img src="${producto.Imagen}" alt="${producto.Nombre}" width="50"></td>
+                        <td>${producto.Imagen}</td>
                         <td>
                             <button onclick="editarProducto(${producto.Id_Producto})">Editar</button>
                         </td>
