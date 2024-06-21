@@ -123,15 +123,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 productos.forEach(producto => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${producto.id}</td>
-                        <td>${producto.nombre}</td>
-                        <td>${producto.descripcion}</td>
-                        <td>${producto.precio}</td>
-                        <td>${producto.cantidad}</td>
-                        <td>${producto.habilitado}</td>
-                        <td><img src="${producto.imagen}" alt="${producto.nombre}" width="50"></td>
+                        <td>${producto.Id_Producto}</td>
+                        <td>${producto.Nombre}</td>
+                        <td>${producto.Descripcion}</td>
+                        <td>${producto.Precio}</td>
+                        <td>${producto.Cantidad}</td>
+                        <td>${producto.Habilitado}</td>
+                        <td><img src="${producto.Imagen}" alt="${producto.Nombre}" width="50"></td>
                         <td>
-                            <button onclick="editarProducto(${producto.id})">Editar</button>
+                            <button onclick="editarProducto(${producto.Id_Producto})">Editar</button>
                         </td>
                     `;
                     productosTable.appendChild(row);
