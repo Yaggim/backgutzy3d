@@ -8,38 +8,61 @@
 </head>
 <body>
     <div class="container">
-        <h1>Agregar Producto</h1>
-        <form id="productoForm" class="form">
-            <div>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            </div>
-            <div>
-                <label for="descripcion">Descripción:</label>
-                <input type="text" id="descripcion" name="descripcion" required>
-            </div>
-            <div>
-                <label for="precio">Precio:</label>
-                <input type="number" id="precio" name="precio" required>
-            </div>
-            <div>
-                <label for="cantidad">Cantidad:</label>
-                <input type="number" id="cantidad" name="cantidad" required>
-            </div>
-            <div>
-                <label for="habilitado">Habilitado:</label>
-                <select id="habilitado" name="habilitado">
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-            </div>
-            <div>
-                <label for="imagen">Imagen:</label>
-                <input type="text" id="imagen" name="imagen" required>
-            </div>
-            <button type="submit">Agregar Producto</button>
-        </form>
-        <div id="productoError" class="error"></div>
+        <h1>Productos</h1>
+        <button id="nuevoProductoButton">Nuevo Producto</button>
+        <table id="productosTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Habilitado</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los productos se cargarán aquí dinámicamente -->
+            </tbody>
+        </table>
+        <div id="productoFormContainer" style="display: none;">
+            <h2 id="formTitle">Agregar Producto</h2>
+            <form id="productoForm" class="form">
+                <input type="hidden" id="productoId" name="productoId">
+                <div>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div>
+                    <label for="descripcion">Descripción:</label>
+                    <input type="text" id="descripcion" name="descripcion" required>
+                </div>
+                <div>
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" name="precio" required>
+                </div>
+                <div>
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" required>
+                </div>
+                <div>
+                    <label for="habilitado">Habilitado:</label>
+                    <select id="habilitado" name="habilitado">
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="imagen">Imagen:</label>
+                    <input type="text" id="imagen" name="imagen" required>
+                </div>
+                <button type="submit">Guardar Producto</button>
+            </form>
+            <button id="cancelarButton">Cancelar</button>
+            <div id="productoError" class="error"></div>
+        </div>
         <button id="logoutButton" style="display: none;">Cerrar Sesión</button>
     </div>
 
