@@ -1,4 +1,3 @@
-
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -11,11 +10,13 @@ body {
 
 .container {
     max-width: 800px;
+    width: 100%;
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin: 20px;
+    box-sizing: border-box;
 }
 
 .form {
@@ -51,18 +52,17 @@ body {
 }
 
 .form button:hover {
-    background-color: #0056b3; 
+    background-color: #0056b3;
 }
 
 .error {
-    color: #dc3545; 
+    color: #dc3545;
     font-size: 14px;
     margin-top: 5px;
 }
 
-
 #loginContainer {
-    display: none; 
+    display: none;
 }
 
 #loginContainer h1 {
@@ -74,10 +74,9 @@ body {
     margin-bottom: 20px;
 }
 
-
 #nuevoProductoButton {
     padding: 12px 20px;
-    background-color: #28a745; 
+    background-color: #28a745;
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -88,12 +87,12 @@ body {
 }
 
 #nuevoProductoButton:hover {
-    background-color: #218838; 
+    background-color: #218838;
 }
 
 #cancelarButton {
     padding: 10px 16px;
-    background-color: #dc3545; 
+    background-color: #dc3545;
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -104,13 +103,11 @@ body {
 }
 
 #cancelarButton:hover {
-    background-color: #c82333; 
+    background-color: #c82333;
 }
 
-
-
 #productoFormContainer {
-    display: none; 
+    display: none;
 }
 
 #productoFormContainer h2 {
@@ -140,7 +137,7 @@ body {
 
 #productoFormContainer form button {
     padding: 12px 20px;
-    background-color: #007bff; 
+    background-color: #007bff;
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -150,9 +147,8 @@ body {
 }
 
 #productoFormContainer form button:hover {
-    background-color: #0056b3; 
+    background-color: #0056b3;
 }
-
 
 #productosTable {
     width: 100%;
@@ -168,7 +164,7 @@ body {
 }
 
 #productosTable th {
-    background-color: #f0f0f0; 
+    background-color: #f0f0f0;
     font-weight: bold;
 }
 
@@ -179,12 +175,12 @@ body {
 }
 
 #productosTable .acciones {
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 
 #productosTable .acciones button {
     padding: 8px 12px;
-    background-color: #ffc107; 
+    background-color: #ffc107;
     color: #ffffff;
     border: none;
     border-radius: 4px;
@@ -194,23 +190,91 @@ body {
 }
 
 #productosTable .acciones button:hover {
-    background-color: #e0a800; 
+    background-color: #e0a800;
 }
-
-
 
 #logoutButton {
     padding: 12px 20px;
-    background-color: #dc3545; 
+    background-color: #dc3545;
     color: #ffffff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
-    display: none; 
+    display: none;
 }
 
 #logoutButton:hover {
-    background-color: #c82333; 
+    background-color: #c82333;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .form {
+        flex-direction: column;
+    }
+
+    .form > div {
+        margin-bottom: 10px;
+    }
+
+    .form input,
+    .form select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #nuevoProductoButton, #cancelarButton, #logoutButton {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #productosTable th, #productosTable td {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    #productosTable td img {
+        max-width: 50px;
+    }
+
+    .acciones button {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .form input,
+    .form select {
+        padding: 6px;
+    }
+
+    .form button {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+
+    #productosTable th, #productosTable td {
+        padding: 4px;
+        font-size: 10px;
+    }
+
+    #productosTable td img {
+        max-width: 30px;
+    }
+
+    .acciones button {
+        padding: 4px 6px;
+        font-size: 10px;
+    }
 }
