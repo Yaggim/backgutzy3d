@@ -52,10 +52,14 @@ export async function crearUsuario(req, res) {
     const idCliente = result[0].insertId;
     console.log(idCliente);
 
+    // Encripta la contraseña
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
     // Inserta el usuario asociado al cliente con rol USUARIO (asumimos Id_Rol = 2 para USUARIO)
     await pool.query(
       "INSERT INTO usuario (Clave, Email, Id_Rol, Id_Cliente) VALUES (?, ?, ?, ?)",
-      [password, email, 2, idCliente]
+      [hashedPassword, email, 2, idCliente]
     );
 
     // Confirma la transacción
@@ -90,23 +94,30 @@ export async function loginUsuario(req, res) {
 
     const user = userResult[0];
 
-    if (user.Clave == password) {
-      // Verifica el rol del usuario
-      const role = user.Id_Rol;
+    // Verifica la contraseña
+    const isMatch = await bcrypt.compare(password, user.Clave);
 
-      if (role === 1) {
-        // Redirige a la URL de admin
-        res
-          .status(200)
-          .json({ redirectUrl: "https://backgutzy3d.onrender.com/" });
-      } else if (role === 2) {
-        // Loguea como cliente
-        res.status(200).json({ message: "Login exitoso" });
+    if (isMatch) {
+      if (user.Clave == password) {
+        // Verifica el rol del usuario
+        const role = user.Id_Rol;
+
+        if (role === 1) {
+          // Redirige a la URL de admin
+          res
+            .status(200)
+            .json({ redirectUrl: "https://backgutzy3d.onrender.com/" });
+        } else if (role === 2) {
+          // Loguea como cliente
+          res.status(200).json({ message: "Login exitoso" });
+        } else {
+          res.status(400).json({ error: "Rol de usuario no reconocido" });
+        }
       } else {
-        res.status(400).json({ error: "Rol de usuario no reconocido" });
+        return res
+          .status(400)
+          .json({ error: "Usuario o contraseña incorrecta" });
       }
-    } else {
-      return res.status(400).json({ error: "Usuario o contraseña incorrecta" });
     }
   } catch (error) {
     console.error("Error en el login:", error);
