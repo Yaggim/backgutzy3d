@@ -98,7 +98,7 @@ export async function loginUsuario(req, res) {
     const isMatch = await bcrypt.compare(password, user.Clave);
 
     if (isMatch) {
-      if (user.Clave == password) {
+
         // Verifica el rol del usuario
         const role = user.Id_Rol;
 
@@ -118,7 +118,6 @@ export async function loginUsuario(req, res) {
           .status(400)
           .json({ error: "Usuario o contraseña incorrecta" });
       }
-    }
   } catch (error) {
     console.error("Error en el login:", error);
     res.status(500).json({ error: "Error en el login" });
