@@ -84,7 +84,7 @@ export async function loginUsuario(req, res) {
 
     // Verifica si el email existe en la tabla usuario
     const [userResult] = await pool.query(
-      "SELECT * FROM binq74jhcfim1oxvuda1.usuario WHERE Email = ?",
+      "SELECT * FROM bzcz3svd5mlkmxxnzf54.usuario WHERE Email = ?",
       [email]
     );
 

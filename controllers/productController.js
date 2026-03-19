@@ -35,7 +35,7 @@ export async function modificarProducto(req, res) {
 
 export async function obtenerProductos(req, res) {
     try {
-        const [rows] = await pool.query('SELECT * FROM binq74jhcfim1oxvuda1.producto');
+        const [rows] = await pool.query('SELECT * FROM bzcz3svd5mlkmxxnzf54.producto');
         res.json(rows);
     } catch (error) {
         console.error('Error al obtener productos:', error);
