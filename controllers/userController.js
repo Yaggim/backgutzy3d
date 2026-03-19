@@ -56,7 +56,7 @@ export async function crearUsuario(req, res) {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    // Inserta el usuario asociado al cliente con rol USUARIO (asumimos Id_Rol = 2 para USUARIO)
+    // Inserta el usuario asociado al cliente con rol USUARIO (Id_Rol = 2 para USUARIO)
     await pool.query(
       "INSERT INTO usuario (Clave, Email, Id_Rol, Id_Cliente) VALUES (?, ?, ?, ?)",
       [hashedPassword, email, 2, idCliente]
